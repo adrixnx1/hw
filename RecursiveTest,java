@@ -1,0 +1,57 @@
+// Adriana Barcenas
+//
+// Possible test file for CSCI3302 HWI1
+
+public class RecursiveTest {
+   public static void main(String [] args) {
+   
+      Integer [] array1 = {8, 7, 6, 5, 4, 3, 2, 1};
+      Double [] array2 = {8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0};
+      
+      System.out.println("Reversing arrays (should be 1-8):");
+      printReverse(array1, array1.length - 1);
+      System.out.println();
+      printReverse(array2, array2.length - 1);
+      System.out.println();
+      
+      System.out.println("The middle letter(s) of supercalifragilisticexpialidocious: " + findMiddle("supercalifragilisticexpialidocious"));
+      System.out.println();
+      System.out.println(" 10 choose 6 is " + choose(10, 6));
+      // You can use comments or attach another document to answer question 4
+      
+      System.out.println(" 3^11 is " + (int)(Math.pow(3,11)) + ". I say again: " + power1(3, 11) + " and one more time: " + power2(3, 11) + ".");
+  }
+  public static <T> void printReverse(T[] array, int index) {
+   if (index < 0) return;
+   System.out.print(array[index] + "");
+   printReverse(array, index - 1);
+  }
+  public static String findMiddle(String str) {
+   int length = str.length();
+   if (length % 2 == 0) {
+      return str.substring( length / 2 - 1, length/2 + 1);
+   }
+   else {
+      return str.substring(length / 2, length / 2+ 1);
+   }
+  }
+  public static int choose (int n , int k ) {
+   if ( k == 0 || k == n) return 1;
+   return choose(n - 1, k - 1) + choose ( n - 1, k);
+  }
+  public static int power1 ( int x, int n ) {
+   if ( n == 0 ) return 1;
+   return x * power1(x, n-1);
+  }
+  public static int power2( int x, int n){
+   if ( n == 0) return 1;
+   int halfPower = power2(x, n /2);
+   if( n % 2 == 0){
+      return halfPower * halfPower;
+   } else {
+      return x * halfPower * halfPower;
+   }
+  }
+}
+      
+      
